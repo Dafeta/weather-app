@@ -34,8 +34,8 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100 relative'>
-      <video className='absolute' autoPlay loop muted>
+    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100 relative overflow-hidden'>
+      <video className='absolute top-0 left-0 w-full h-full object-cover' autoPlay loop muted>
         <source src={WeatherVideoAlt} />
       </video>
       <div className='bg-black/60  text-white  rounded-lg shadow-lg p-8 max-w-md w-full z-10'>
