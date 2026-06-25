@@ -10,22 +10,23 @@ const WeatherCard = ( {weather} ) => {
         <p className='font-bold text-3xl'>{Math.round(weather.main.temp)}°C</p>
       </div>
       <p className='text-gray-400 text-center capitalize'>{weather.weather[0].description}</p>
-      <div className='grid grid-cols-2 gap-2 mt-6 text-center'>
+
+      <div className='grid grid-cols-2 gap-4 mt-6 text-center'>
         <div>
           <p className='text-gray-400 text-md'>Humidity</p>
-          <p>{weather.main.humidity}%</p>
+          <p className='font-bold'>{weather.main.humidity}%</p>
         </div>
         <div>
-          <p>Wind</p>
-          <p>{weather.wind.speed} m/s</p>
+          <p className='text-gray-400 text-md'>Wind</p>
+          <p className='font-bold'>{weather.wind.speed} m/s</p>
         </div>
         <div>
-          <p>Pressure</p>
-          <p>{weather.main.pressure} hPa</p>
+          <p className='text-gray-400 text-md'>Pressure</p>
+          <p className='font-bold'>{weather.main.pressure} hPa</p>
         </div>
         <div>
-          <p>Feels like</p>
-          <p>{Math.round(weather.main.temp_max)}°C</p>
+          <p className='text-gray-400 text-md'>Feels like</p>
+          <p className='font-bold'>{Math.round(weather.main.feels_like)}°C</p>
         </div>
       </div>
     </div>
