@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SearchBar from './components/SearchBar'
 import axios from 'axios'
 import WeatherCard from './components/WeatherCard'
+import WeatherVideoAlt from './WeatherVideoAlt.mp4'
 
 function App() {
 
@@ -33,8 +34,11 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100'>
-      <div className='bg-black/90 text-white  rounded-lg shadow-lg p-8 max-w-md w-full'>
+    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100 relative'>
+      <video className='absolute' autoPlay loop muted>
+        <source src={WeatherVideoAlt} />
+      </video>
+      <div className='bg-black/60  text-white  rounded-lg shadow-lg p-8 max-w-md w-full z-10'>
         <h1 className='text-white font-bold text-3xl text-center mb-6'>Weather App</h1>
         <SearchBar fetchWeather={fetchWeather}/>
         { loading && <p className='text-center mt-4 font-semibold'>Loading...</p> }
