@@ -1,0 +1,44 @@
+import { useState } from 'react'
+import SearchBar from './components/SearchBar'
+import axios from 'axios'
+import WeatherCard from './components/WeatherCard'
+
+function App() {
+
+  const [weather, setWeather] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  const API_KEY = import.meta.env.VITE_API_KEY
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather`
+
+  const fetchWeather = async (city) => {
+    setLoading(true)
+    setError('')
+    try {
+      const url = `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
+      const response = await axios.get(url)
+      console.log(response.data)
+      setWeather(response.data)
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setError("City not found. Please try again.")
+      } else {
+        setError("An error occured, please try again later.")
+      }
+      setWeather(null)
+    }
+  }
+
+  return (
+    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100'>
+      <div className='bg-black/90 text-white  rounded-lg shadow-lg p-8 max-w-md w-full'>
+        <h1 className='text-white font-bold text-3xl text-center mb-6'>Weather App</h1>
+        <SearchBar fetchWeather={fetchWeather}/>
+        { weather && <WeatherCard weather={weather}/> }
+      </div>
+    </div>
+  )
+}
+
+export default App
