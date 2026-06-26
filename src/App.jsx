@@ -34,12 +34,12 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center bg-blue-100 relative overflow-hidden'>
-      <video className='absolute top-0 left-0 w-full h-full object-cover' autoPlay loop muted>
+    <div className='min-h-screen h-screen flex flex-col justify-center items-center bg-blue-100 relative overflow-hidden'>
+      <video className='absolute top-0 left-0 w-full h-full object-cover' autoPlay loop muted playsInline>
         <source src={WeatherVideoAlt} />
       </video>
-      <div className='bg-black/60  text-white  rounded-lg shadow-lg p-8 max-w-md w-full z-10'>
-        <h1 className='text-white font-bold text-3xl text-center mb-6'>Weather App</h1>
+      <div className='bg-black/60 text-white  rounded-none sm:rounded-lg shadow-lg p-6 md:p-8 max-w-md w-full h-screen sm:h-auto z-10 backdrop-blur-sm'>
+        <h1 className='text-white font-bold text-xl md:text-3xl text-center mb-6'>Weather App</h1>
         <SearchBar fetchWeather={fetchWeather}/>
         { loading && <p className='text-center mt-4 font-semibold'>Loading...</p> }
         { error && <p className='text-center mt-4 text-red-500'>{error}</p> }
