@@ -6,7 +6,7 @@ export default function SearchBar({ fetchWeather }) {
   const [city, setCity] = useState("")
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (city.trim) {
+    if (city.trim()) {
       fetchWeather(city)
       setCity('')
     }
